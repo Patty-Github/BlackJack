@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.button {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    font-size: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    margin: 10px 30px 10px 30px;
+    border-radius: 20px;
+    width: calc(100% - 60px);
+    background-color: rgb(50, 50, 50);
+}
+
+.dealerArea {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 30px 10px 30px;
+    border-radius: 20px;
+    height: fit-content;
+    min-height: 320px;
+    width: calc(100% - 60px);
+    background-color: rgb(50, 50, 50);
+}
+
+.playerArea {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 30px 10px 30px;
+    border-radius: 20px;
+    height: fit-content;
+    min-height: 320px;
+    width: calc(100% - 60px);
+    background-color: rgb(50, 50, 50);
+}
+
+.playerTotal, .dealerTotal {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+    width: calc(100% - 60px);;
+    border-radius: 20px;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-size: 20px;
+}
+
+.card, .dealerCard {
+    display: none;
+    font-size: 50px;
+    background-color: white;
+    height: 300px;
+    width: 200px;
+    margin: 10px;
+    align-items: center;
+    justify-content: space-around;
+    text-wrap: wrap;
+}
+
+#blank {
+    display: none;
+}
+
+.heart {
+    color: red;
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="/blackjack.css">
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <button class="button" onclick="nextHand()">New Hand</button>
+            <button class="button" onclick="Hit()">Hit</button>
+            <button class="button" onclick="stand()">Stand</button>
+            <!--<button class="button" onclick="playerTotal()">Refresh</button>
+            <button class="button" onclick="logCardsDealt()">Cards</button>
+            <button class="button" onclick="dealerHit()">Dealer Hit</button>-->
+        </div>
+        <div class="dealerArea">
+            <div data-value="0" class="dealerCard 00" id="blank">???</div>
+            <div data-value="11" class="dealerCard club 0" id="dealerAceClub">Ace of Clubs</div>
+            <div data-value="2" class="dealerCard club 1" id="dealerTwoClub">2 of Clubs</div>
+            <div data-value="3" class="dealerCard club 2" id="dealerThreeClub">3 of Clubs</div>
+            <div data-value="4" class="dealerCard club 3" id="dealerFourClub">4 of Clubs</div>
+            <div data-value="5" class="dealerCard club 4" id="dealerFiveClub">5 of Clubs</div>
+            <div data-value="6" class="dealerCard club 5" id="dealerSixClub">6 of Clubs</div>
+            <div data-value="7" class="dealerCard club 6" id="dealerSevenClub">7 of Clubs</div>
+            <div data-value="8" class="dealerCard club 7" id="dealerEightClub">8 of Clubs</div>
+            <div data-value="9" class="dealerCard club 8" id="dealerNineClub">9 of Clubs</div>
+            <div data-value="10" class="dealerCard club 9" id="dealerTenClub">10 of Clubs</div>
+            <div data-value="10" class="dealerCard club 10" id="dealerJackClub">Jack of Clubs</div>
+            <div data-value="10" class="dealerCard club 11" id="dealerQueenClub">Queen of Clubs</div>
+            <div data-value="10" class="dealerCard club 12" id="dealerKingClub">King of Clubs</div>
+            <div data-value="11" class="dealerCard heart 13" id="dealerAceHeart">Ace of Hearts</div>
+            <div data-value="2" class="dealerCard heart 14" id="dealerTwoHeart">2 of Hearts</div>
+            <div data-value="3" class="dealerCard heart 15" id="dealerThreeHeart">3 of Hearts</div>
+            <div data-value="4" class="dealerCard heart 16" id="dealerFourHeart">4 of Hearts</div>
+            <div data-value="5" class="dealerCard heart 17" id="dealerFiveHeart">5 of Hearts</div>
+            <div data-value="6" class="dealerCard heart 18" id="dealerSixHeart">6 of Hearts</div>
+            <div data-value="7" class="dealerCard heart 19" id="dealerSevenHeart">7 of Hearts</div>
+            <div data-value="8" class="dealerCard heart 20" id="dealerEightHeart">8 of Hearts</div>
+            <div data-value="9" class="dealerCard heart 21" id="dealerNineHeart">9 of Hearts</div>
+            <div data-value="10" class="dealerCard heart 22" id="dealerTenHeart">10 of Hearts</div>
+            <div data-value="10" class="dealerCard heart 23" id="dealerJackHeart">Jack of Hearts</div>
+            <div data-value="10" class="dealerCard heart 24" id="dealerQueenHeart">Queen of Hearts</div>
+            <div data-value="10" class="dealerCard heart 25" id="dealerKingHeart">King of Hearts</div>
+        </div>
+        <div class="dealerTotal"><p id="dealerTotalPara">Dealer Total:</p></div>
+        <div class="playerArea">
+            <div data-value="11" class="card club 0" id="aceClub">Ace of Clubs</div>
+            <div data-value="2" class="card club 1" id="twoClub">2 of Clubs</div>
+            <div data-value="3" class="card club 2" id="threeClub">3 of Clubs</div>
+            <div data-value="4" class="card club 3" id="fourClub">4 of Clubs</div>
+            <div data-value="5" class="card club 4" id="fiveClub">5 of Clubs</div>
+            <div data-value="6" class="card club 5" id="sixClub">6 of Clubs</div>
+            <div data-value="7" class="card club 6" id="sevenClub">7 of Clubs</div>
+            <div data-value="8" class="card club 7" id="eightClub">8 of Clubs</div>
+            <div data-value="9" class="card club 8" id="nineClub">9 of Clubs</div>
+            <div data-value="10" class="card club 9" id="tenClub">10 of Clubs</div>
+            <div data-value="10" class="card club 10" id="jackClub">Jack of Clubs</div>
+            <div data-value="10" class="card club 11" id="queenClub">Queen of Clubs</div>
+            <div data-value="10" class="card club 12" id="kingClub">King of Clubs</div>
+            <div data-value="11" class="card heart 13" id="aceHeart">Ace of Hearts</div>
+            <div data-value="2" class="card heart 14" id="twoHeart">2 of Hearts</div>
+            <div data-value="3" class="card heart 15" id="threeHeart">3 of Hearts</div>
+            <div data-value="4" class="card heart 16" id="fourHeart">4 of Hearts</div>
+            <div data-value="5" class="card heart 17" id="fiveHeart">5 of Hearts</div>
+            <div data-value="6" class="card heart 18" id="sixHeart">6 of Hearts</div>
+            <div data-value="7" class="card heart 19" id="sevenHeart">7 of Hearts</div>
+            <div data-value="8" class="card heart 20" id="eightHeart">8 of Hearts</div>
+            <div data-value="9" class="card heart 21" id="nineHeart">9 of Hearts</div>
+            <div data-value="10" class="card heart 22" id="tenHeart">10 of Hearts</div>
+            <div data-value="10" class="card heart 23" id="jackHeart">Jack of Hearts</div>
+            <div data-value="10" class="card heart 24" id="queenHeart">Queen of Hearts</div>
+            <div data-value="10" class="card heart 25" id="kingHeart">King of Hearts</div>
+        </div>
+        <div class="playerTotal"><p id="playerTotalPara">Player Total:</p></div>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll(".card");
+        const dealerCards = document.querySelectorAll(".dealerCard");
+        const blankCard = document.getElementById("blank");
+        let cardsDealt = [];
+
+        const playerTotalDiv = document.querySelector(".playerTotal");
+        const dealerTotalDiv = document.querySelector(".dealerTotal");
+        let playerTotalP = document.getElementById("playerTotalPara");
+        let dealerTotalP = document.getElementById("dealerTotalPara");
+        let playerTotalNumber = 0;
+        let dealerTotalNumber = 0;
+
+        function playerTotal() {
+            cards.forEach((checkCardDisplay) => {
+                if(checkCardDisplay.style.display == "block") {
+                    let cardValue = parseInt(checkCardDisplay.getAttribute("data-value"));
+                    //console.log(cardValue);
+
+                    playerTotalNumber += cardValue;
+                } else {
+                    return;
+                    //console.log("Card is not displayed");
+                }
+            })
+            //console.log(playerTotalNumber);
+
+            let playerTotalNumberDisplay = document.createTextNode("Player Total: " + playerTotalNumber);
+
+            if(playerTotalP.hasChildNodes()) {
+                playerTotalP.removeChild(playerTotalP.firstChild);
+            } 
+            playerTotalP.appendChild(playerTotalNumberDisplay);
+        }
+        document.addEventListener("DOMContentLoaded", playerTotal());
+
+        function dealerTotal() {
+            dealerCards.forEach((checkDealerCardDisplay) => {
+                if(checkDealerCardDisplay.style.display == "block") {
+                    let cardValue = parseInt(checkDealerCardDisplay.getAttribute("data-value"));
+                    //console.log(cardValue);
+
+                    dealerTotalNumber += cardValue;
+                } else {
+                    return;
+                    //console.log("Card is not displayed");
+                }
+            })
+            //console.log(playerTotalNumber);
+
+            let dealerTotalNumberDisplay = document.createTextNode("Dealer Total: " + dealerTotalNumber);
+
+            if(dealerTotalP.hasChildNodes()) {
+                dealerTotalP.removeChild(dealerTotalP.firstChild);
+            } 
+            dealerTotalP.appendChild(dealerTotalNumberDisplay);
+        }
+        document.addEventListener("DOMContentLoaded", dealerTotal());
+
+        function nextHand() {
+            cardsDealt.length = 0;
+            cards.forEach((cardDisplayNone) => {
+                cardDisplayNone.style.display = "none";
+            })
+            dealerCards.forEach((dealerCardDisplayNone) => {
+                dealerCardDisplayNone.style.display = "none";
+            })
+            blankCard.style.display = "block";
+            let dealerCard = Math.floor(Math.random() * 25);
+            console.log(dealerCard);
+            dealerCards.forEach((dealerCardShow) => {
+                if(dealerCardShow.classList.contains(dealerCard)) {
+                    dealerCardShow.style.display = "block";
+                    cardsDealt.push(dealerCard);
+                }
+            })
+            for(let i = 0; i < 2; i++) {
+                let cardDeal = Math.floor(Math.random() * 25);
+                console.log(cardDeal);
+                cards.forEach((cardShow) => {
+                if(cardShow.classList.contains(cardDeal) && !cardsDealt.includes(cardDeal)) {
+                    cardShow.style.display = "block";
+                    cardsDealt.push(cardDeal);
+                } else if(cardShow.classList.contains(cardDeal) && cardsDealt.includes(cardDeal)) {
+                    Hit();
+                    return;
+                }
+            })
+            }
+
+            playerTotalNumber = 0;
+            dealerTotalNumber = 0;
+            playerTotal();
+            dealerTotal();
+        }
+
+        function Hit() {
+            let cardDeal = Math.floor(Math.random() * 25);
+            console.log(cardDeal);
+            cards.forEach((cardShow) => {
+                if(cardShow.classList.contains(cardDeal) && !cardsDealt.includes(cardDeal)) {
+                    cardShow.style.display = "block";
+                    cardsDealt.push(cardDeal);
+                } else if(cardShow.classList.contains(cardDeal) && cardsDealt.includes(cardDeal)) {
+                    Hit();
+                    return;
+                }
+            })
+            playerTotalNumber = 0;
+            dealerTotalNumber = 0;
+            playerTotal();
+        }
+
+        function dealerHit() {
+            let dealerCard = Math.floor(Math.random() * 25);
+            console.log(dealerCard);
+            dealerCards.forEach((dealerCardShow) => {
+                if(dealerCardShow.classList.contains(dealerCard)) {
+                    dealerCardShow.style.display = "block";
+                    cardsDealt.push(dealerCard);
+                }
+            })
+            dealerTotalNumber = 0;
+            dealerTotal();
+        }
+
+        function stand() {
+            blankCard.style.display = "none";
+            let dealerCard = Math.floor(Math.random() * 25);
+            console.log(dealerCard);
+            dealerCards.forEach((dealerCardShow) => {
+                if(dealerCardShow.classList.contains(dealerCard) && !cardsDealt.includes(dealerCard)) {
+                    dealerCardShow.style.display = "block";
+                } else if(dealerCardShow.classList.contains(dealerCard) && cardsDealt.includes(dealerCard)) {
+                    stand();
+                    return;
+                }
+            })
+            dealerTotalNumber = 0;
+            dealerTotal();
+
+            dealerEnd();
+        }
+
+        function dealerEnd() {
+                setTimeout(() => {
+                if(dealerTotalNumber <= 16) {
+                    dealerHit();
+                    dealerEnd();
+                } else if(dealerTotalNumber >= 17) {
+                    console.log("Dealer is over 16")
+                    //run win function
+                }
+            }, 500);
+        }
+
+        function logCardsDealt() {
+            console.log(cardsDealt);
+        }
+    </script>
+
+    <!-- 
+        make it so that the most recent card is shown at the end
+        have ace =1 if >21
+    -->
+</body>
+</html>
