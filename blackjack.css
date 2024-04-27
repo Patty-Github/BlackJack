@@ -32,6 +32,19 @@
     background-color: rgb(50, 50, 50);
 }
 
+#riggedContainer {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    color: white;
+}
+
+#riggedCheckbox {
+    height: 25px;
+    width: 25px;
+    margin: 0 10px 0 10px;
+}
+
 .dealerArea {
     display: flex;
     flex-direction: row;
@@ -70,13 +83,15 @@
 }
 
 .card, .dealerCard {
-    display: none;
-    font-size: 50px;
+    font-size: 60px;
     background-color: white;
     height: 300px;
     width: 200px;
     margin: 10px;
+    padding: 0 0 0 10px;
+    text-align: start;
     text-wrap: wrap;
+    border-radius: 10px;
 }
 
 #blank {
@@ -90,3 +105,19 @@
 .diamond {
     color: red;
 }
+
+.dealerCardsGenerated {
+    display: none;
+}
+
+.playerCardsGenerated {
+    display: none;
+}
+
+/*body {
+    background-color: rgb(46, 33, 33)
+}
+
+.controls, .dealerArea, .playerArea, .playerTotal, .dealerTotal {
+    background-color: rgb(20, 20, 20);
+}*/

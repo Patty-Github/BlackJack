@@ -9,16 +9,17 @@
 <body>
     <div class="container">
         <div class="controls">
+            <label id="riggedContainer">Rigged <input type="checkbox" id="riggedCheckbox"> </label>
             <button class="button" onclick="nextHand()">New Hand</button>
             <button class="button" onclick="Hit()">Hit</button>
             <button class="button" onclick="stand()">Stand</button>
             <!--<button class="button" onclick="playerTotal()">Refresh</button>
             <button class="button" onclick="logCardsDealt()">Cards</button>
             <button class="button" onclick="dealerHit()">Dealer Hit</button>
-            <button class="button" onclick="aceIsOne()">Ace1</button>-->
+            <button class="button" onclick="aceIsOne()">Ace1</button>
+            <button class="button" onclick="logCards()">Cards</button>-->
         </div>
-        <div class="dealerArea">
-            <div data-value="0" class="dealerCard 00" id="blank">???</div>
+        <div class="dealerCardsGenerated" id="dealerCardsGenerated">
             <div data-value="11" class="dealerCard club 0" id="dealerAceClub">A♠</div>
             <div data-value="2" class="dealerCard club 1" id="dealerTwoClub">2♠</div>
             <div data-value="3" class="dealerCard club 2" id="dealerThreeClub">3♠</div>
@@ -74,9 +75,16 @@
             <div data-value="10" class="dealerCard diamond 49" id="JackDiamond">J♦</div>
             <div data-value="10" class="dealerCard diamond 50" id="dealerQueenDiamond">Q♦</div>
             <div data-value="10" class="dealerCard diamond 51" id="dealerKingDiamond">K♦</div>
+
+            <div data-value="0" class="dealerCard 00" id="blank">??</div>
         </div>
+
+        <div class="dealerArea" id="dealerArea"></div>
+
         <div class="dealerTotal"><p id="dealerTotalPara">Dealer Total:</p></div>
-        <div class="playerArea">
+
+
+        <div class="playerCardsGenerated" id="playerCardsGenerated">
             <div data-value="11" class="card club 0" id="aceClub">A♠</div>
             <div data-value="2" class="card club 1" id="twoClub">2♠</div>
             <div data-value="3" class="card club 2" id="threeClub">3♠</div>
@@ -133,13 +141,20 @@
             <div data-value="10" class="card diamond 50" id="queenDiamond">Q♦</div>
             <div data-value="10" class="card diamond 51" id="kingDiamond">K♦</div>
         </div>
+
+        <div class="playerArea" id="playerArea"></div>
+
         <div class="playerTotal"><p id="playerTotalPara">Player Total:</p></div>
+
+        <p style="color: white;">I am not a designer.</p>
     </div>
 
     <script>
         const cards = document.querySelectorAll(".card");
         const dealerCards = document.querySelectorAll(".dealerCard");
         const blankCard = document.getElementById("blank");
+        const playerAreaDiv = document.getElementById("playerArea");
+        const dealerAreaDiv = document.getElementById("dealerArea");
         let cardsDealt = [];
 
         const playerTotalDiv = document.querySelector(".playerTotal");
@@ -206,6 +221,8 @@
 
         function nextHand() {
             cardsDealt.length = 0;
+            playerAreaDiv.innerHTML = "";
+            dealerAreaDiv.innerHTML = "";
             cards.forEach((cardDisplayNone) => {
                 cardDisplayNone.style.display = "none";
             })
@@ -213,11 +230,13 @@
                 dealerCardDisplayNone.style.display = "none";
             })
             blankCard.style.display = "block";
+            dealerAreaDiv.append(dealerCards[52]);
             let dealerCard = Math.floor(Math.random() * 52);
             console.log(dealerCard);
             dealerCards.forEach((dealerCardShow) => {
                 if(dealerCardShow.classList.contains(dealerCard)) {
                     dealerCardShow.style.display = "block";
+                    dealerAreaDiv.append(dealerCards[dealerCard]);
                     cardsDealt.push(dealerCard);
                 }
             })
@@ -227,6 +246,7 @@
                 cards.forEach((cardShow) => {
                 if(cardShow.classList.contains(cardDeal) && !cardsDealt.includes(cardDeal)) {
                     cardShow.style.display = "block";
+                    playerAreaDiv.append(cards[cardDeal]);
                     cardsDealt.push(cardDeal);
                 } else if(cardShow.classList.contains(cardDeal) && cardsDealt.includes(cardDeal)) {
                     Hit();
@@ -256,6 +276,7 @@
             cards.forEach((cardShow) => {
                 if(cardShow.classList.contains(cardDeal) && !cardsDealt.includes(cardDeal)) {
                     cardShow.style.display = "block";
+                    playerAreaDiv.append(cards[cardDeal]);
                     cardsDealt.push(cardDeal);
                 } else if(cardShow.classList.contains(cardDeal) && cardsDealt.includes(cardDeal)) {
                     Hit();
@@ -274,6 +295,7 @@
             dealerCards.forEach((dealerCardShow) => {
                 if(dealerCardShow.classList.contains(dealerCard)) {
                     dealerCardShow.style.display = "block";
+                    dealerAreaDiv.append(dealerCards[dealerCard]);
                     cardsDealt.push(dealerCard);
                 }
             })
@@ -289,6 +311,7 @@
             dealerCards.forEach((dealerCardShow) => {
                 if(dealerCardShow.classList.contains(dealerCard) && !cardsDealt.includes(dealerCard)) {
                     dealerCardShow.style.display = "block";
+                    dealerAreaDiv.append(dealerCards[dealerCard]);
                 } else if(dealerCardShow.classList.contains(dealerCard) && cardsDealt.includes(dealerCard)) {
                     stand();
                     return;
@@ -360,10 +383,15 @@
         function logCardsDealt() {
             console.log(cardsDealt);
         }
+        
+        function logCards() {
+            console.log(cards);
+        }
     </script>
 
     <!-- 
-        make it so that the most recent card is shown at the end
+        add "rigged" mode
+        fix mobile layout
     -->
 </body>
 </html>
