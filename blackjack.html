@@ -14,65 +14,124 @@
             <button class="button" onclick="stand()">Stand</button>
             <!--<button class="button" onclick="playerTotal()">Refresh</button>
             <button class="button" onclick="logCardsDealt()">Cards</button>
-            <button class="button" onclick="dealerHit()">Dealer Hit</button>-->
+            <button class="button" onclick="dealerHit()">Dealer Hit</button>
+            <button class="button" onclick="aceIsOne()">Ace1</button>-->
         </div>
         <div class="dealerArea">
             <div data-value="0" class="dealerCard 00" id="blank">???</div>
-            <div data-value="11" class="dealerCard club 0" id="dealerAceClub">Ace of Clubs</div>
-            <div data-value="2" class="dealerCard club 1" id="dealerTwoClub">2 of Clubs</div>
-            <div data-value="3" class="dealerCard club 2" id="dealerThreeClub">3 of Clubs</div>
-            <div data-value="4" class="dealerCard club 3" id="dealerFourClub">4 of Clubs</div>
-            <div data-value="5" class="dealerCard club 4" id="dealerFiveClub">5 of Clubs</div>
-            <div data-value="6" class="dealerCard club 5" id="dealerSixClub">6 of Clubs</div>
-            <div data-value="7" class="dealerCard club 6" id="dealerSevenClub">7 of Clubs</div>
-            <div data-value="8" class="dealerCard club 7" id="dealerEightClub">8 of Clubs</div>
-            <div data-value="9" class="dealerCard club 8" id="dealerNineClub">9 of Clubs</div>
-            <div data-value="10" class="dealerCard club 9" id="dealerTenClub">10 of Clubs</div>
-            <div data-value="10" class="dealerCard club 10" id="dealerJackClub">Jack of Clubs</div>
-            <div data-value="10" class="dealerCard club 11" id="dealerQueenClub">Queen of Clubs</div>
-            <div data-value="10" class="dealerCard club 12" id="dealerKingClub">King of Clubs</div>
-            <div data-value="11" class="dealerCard heart 13" id="dealerAceHeart">Ace of Hearts</div>
-            <div data-value="2" class="dealerCard heart 14" id="dealerTwoHeart">2 of Hearts</div>
-            <div data-value="3" class="dealerCard heart 15" id="dealerThreeHeart">3 of Hearts</div>
-            <div data-value="4" class="dealerCard heart 16" id="dealerFourHeart">4 of Hearts</div>
-            <div data-value="5" class="dealerCard heart 17" id="dealerFiveHeart">5 of Hearts</div>
-            <div data-value="6" class="dealerCard heart 18" id="dealerSixHeart">6 of Hearts</div>
-            <div data-value="7" class="dealerCard heart 19" id="dealerSevenHeart">7 of Hearts</div>
-            <div data-value="8" class="dealerCard heart 20" id="dealerEightHeart">8 of Hearts</div>
-            <div data-value="9" class="dealerCard heart 21" id="dealerNineHeart">9 of Hearts</div>
-            <div data-value="10" class="dealerCard heart 22" id="dealerTenHeart">10 of Hearts</div>
-            <div data-value="10" class="dealerCard heart 23" id="dealerJackHeart">Jack of Hearts</div>
-            <div data-value="10" class="dealerCard heart 24" id="dealerQueenHeart">Queen of Hearts</div>
-            <div data-value="10" class="dealerCard heart 25" id="dealerKingHeart">King of Hearts</div>
+            <div data-value="11" class="dealerCard club 0" id="dealerAceClub">A♠</div>
+            <div data-value="2" class="dealerCard club 1" id="dealerTwoClub">2♠</div>
+            <div data-value="3" class="dealerCard club 2" id="dealerThreeClub">3♠</div>
+            <div data-value="4" class="dealerCard club 3" id="dealerFourClub">4♠</div>
+            <div data-value="5" class="dealerCard club 4" id="dealerFiveClub">5♠</div>
+            <div data-value="6" class="dealerCard club 5" id="dealerSixClub">6♠</div>
+            <div data-value="7" class="dealerCard club 6" id="dealerSevenClub">7♠</div>
+            <div data-value="8" class="dealerCard club 7" id="dealerEightClub">8♠</div>
+            <div data-value="9" class="dealerCard club 8" id="dealerNineClub">9♠</div>
+            <div data-value="10" class="dealerCard club 9" id="dealerTenClub">10♠</div>
+            <div data-value="10" class="dealerCard club 10" id="dealerJackClub">J♠</div>
+            <div data-value="10" class="dealerCard club 11" id="dealerQueenClub">Q♠</div>
+            <div data-value="10" class="dealerCard club 12" id="dealerKingClub">K♠</div>
+
+            <div data-value="11" class="dealerCard heart 13" id="dealerAceHeart">A♥</div>
+            <div data-value="2" class="dealerCard heart 14" id="dealerTwoHeart">2♥</div>
+            <div data-value="3" class="dealerCard heart 15" id="dealerThreeHeart">3♥</div>
+            <div data-value="4" class="dealerCard heart 16" id="dealerFourHeart">4♥</div>
+            <div data-value="5" class="dealerCard heart 17" id="dealerFiveHeart">5♥</div>
+            <div data-value="6" class="dealerCard heart 18" id="dealerSixHeart">6♥</div>
+            <div data-value="7" class="dealerCard heart 19" id="dealerSevenHeart">7♥</div>
+            <div data-value="8" class="dealerCard heart 20" id="dealerEightHeart">8♥</div>
+            <div data-value="9" class="dealerCard heart 21" id="dealerNineHeart">9♥</div>
+            <div data-value="10" class="dealerCard heart 22" id="dealerTenHeart">10♥</div>
+            <div data-value="10" class="dealerCard heart 23" id="dealerJackHeart">J♥</div>
+            <div data-value="10" class="dealerCard heart 24" id="dealerQueenHeart">Q♥</div>
+            <div data-value="10" class="dealerCard heart 25" id="dealerKingHeart">K♥</div>
+
+            <div data-value="11" class="dealerCard spade 26" id="dealerAceSpade">A♣</div>
+            <div data-value="2" class="dealerCard spade 27" id="dealerTwoSpade">2♣</div>
+            <div data-value="3" class="dealerCard spade 28" id="dealerThreeSpade">3♣</div>
+            <div data-value="4" class="dealerCard spade 29" id="dealerFourSpade">4♣</div>
+            <div data-value="5" class="dealerCard spade 30" id="dealerFiveSpade">5♣</div>
+            <div data-value="6" class="dealerCard spade 31" id="dealerSixSpade">6♣</div>
+            <div data-value="7" class="dealerCard spade 32" id="dealerSevenSpade">7♣</div>
+            <div data-value="8" class="dealerCard spade 33" id="dealerEightSpade">8♣</div>
+            <div data-value="9" class="dealerCard spade 34" id="dealerNineSpade">9♣</div>
+            <div data-value="10" class="dealerCard spade 35" id="dealerTenSpade">10♣</div>
+            <div data-value="10" class="dealerCard spade 36" id="dealerJackSpade">J♣</div>
+            <div data-value="10" class="dealerCard spade 37" id="dealerQueenSpade">Q♣</div>
+            <div data-value="10" class="dealerCard spade 38" id="dealerKingSpade">K♣</div>
+
+            <div data-value="11" class="dealerCard diamond 39" id="dealerAceDiamond">A♦</div>
+            <div data-value="2" class="dealerCard diamond 40" id="dealerTwoDiamond">2♦</div>
+            <div data-value="3" class="dealerCard diamond 41" id="dealerThreeDiamond">3♦</div>
+            <div data-value="4" class="dealerCard diamond 42" id="dealerFourDiamond">4♦</div>
+            <div data-value="5" class="dealerCard diamond 43" id="dealerFiveDiamond">5♦</div>
+            <div data-value="6" class="dealerCard diamond 44" id="dealerSixDiamond">6♦</div>
+            <div data-value="7" class="dealerCard diamond 45" id="dealerSevenDiamond">7♦</div>
+            <div data-value="8" class="dealerCard diamond 46" id="dealerEightDiamond">8♦</div>
+            <div data-value="9" class="dealerCard diamond 47" id="dealerNineDiamond">9♦</div>
+            <div data-value="10" class="dealerCard diamond 48" id="dealerTenDiamond">10♦</div>
+            <div data-value="10" class="dealerCard diamond 49" id="JackDiamond">J♦</div>
+            <div data-value="10" class="dealerCard diamond 50" id="dealerQueenDiamond">Q♦</div>
+            <div data-value="10" class="dealerCard diamond 51" id="dealerKingDiamond">K♦</div>
         </div>
         <div class="dealerTotal"><p id="dealerTotalPara">Dealer Total:</p></div>
         <div class="playerArea">
-            <div data-value="11" class="card club 0" id="aceClub">Ace of Clubs</div>
-            <div data-value="2" class="card club 1" id="twoClub">2 of Clubs</div>
-            <div data-value="3" class="card club 2" id="threeClub">3 of Clubs</div>
-            <div data-value="4" class="card club 3" id="fourClub">4 of Clubs</div>
-            <div data-value="5" class="card club 4" id="fiveClub">5 of Clubs</div>
-            <div data-value="6" class="card club 5" id="sixClub">6 of Clubs</div>
-            <div data-value="7" class="card club 6" id="sevenClub">7 of Clubs</div>
-            <div data-value="8" class="card club 7" id="eightClub">8 of Clubs</div>
-            <div data-value="9" class="card club 8" id="nineClub">9 of Clubs</div>
-            <div data-value="10" class="card club 9" id="tenClub">10 of Clubs</div>
-            <div data-value="10" class="card club 10" id="jackClub">Jack of Clubs</div>
-            <div data-value="10" class="card club 11" id="queenClub">Queen of Clubs</div>
-            <div data-value="10" class="card club 12" id="kingClub">King of Clubs</div>
-            <div data-value="11" class="card heart 13" id="aceHeart">Ace of Hearts</div>
-            <div data-value="2" class="card heart 14" id="twoHeart">2 of Hearts</div>
-            <div data-value="3" class="card heart 15" id="threeHeart">3 of Hearts</div>
-            <div data-value="4" class="card heart 16" id="fourHeart">4 of Hearts</div>
-            <div data-value="5" class="card heart 17" id="fiveHeart">5 of Hearts</div>
-            <div data-value="6" class="card heart 18" id="sixHeart">6 of Hearts</div>
-            <div data-value="7" class="card heart 19" id="sevenHeart">7 of Hearts</div>
-            <div data-value="8" class="card heart 20" id="eightHeart">8 of Hearts</div>
-            <div data-value="9" class="card heart 21" id="nineHeart">9 of Hearts</div>
-            <div data-value="10" class="card heart 22" id="tenHeart">10 of Hearts</div>
-            <div data-value="10" class="card heart 23" id="jackHeart">Jack of Hearts</div>
-            <div data-value="10" class="card heart 24" id="queenHeart">Queen of Hearts</div>
-            <div data-value="10" class="card heart 25" id="kingHeart">King of Hearts</div>
+            <div data-value="11" class="card club 0" id="aceClub">A♠</div>
+            <div data-value="2" class="card club 1" id="twoClub">2♠</div>
+            <div data-value="3" class="card club 2" id="threeClub">3♠</div>
+            <div data-value="4" class="card club 3" id="fourClub">4♠</div>
+            <div data-value="5" class="card club 4" id="fiveClub">5♠</div>
+            <div data-value="6" class="card club 5" id="sixClub">6♠</div>
+            <div data-value="7" class="card club 6" id="sevenClub">7♠</div>
+            <div data-value="8" class="card club 7" id="eightClub">8♠</div>
+            <div data-value="9" class="card club 8" id="nineClub">9♠</div>
+            <div data-value="10" class="card club 9" id="tenClub">10♠</div>
+            <div data-value="10" class="card club 10" id="jackClub">J♠</div>
+            <div data-value="10" class="card club 11" id="queenClub">Q♠</div>
+            <div data-value="10" class="card club 12" id="kingClub">K♠</div>
+
+            <div data-value="11" class="card heart 13" id="aceHeart">A♥</div>
+            <div data-value="2" class="card heart 14" id="twoHeart">2♥</div>
+            <div data-value="3" class="card heart 15" id="threeHeart">3♥</div>
+            <div data-value="4" class="card heart 16" id="fourHeart">4♥</div>
+            <div data-value="5" class="card heart 17" id="fiveHeart">5♥</div>
+            <div data-value="6" class="card heart 18" id="sixHeart">6♥</div>
+            <div data-value="7" class="card heart 19" id="sevenHeart">7♥</div>
+            <div data-value="8" class="card heart 20" id="eightHeart">8♥</div>
+            <div data-value="9" class="card heart 21" id="nineHeart">9♥</div>
+            <div data-value="10" class="card heart 22" id="tenHeart">10♥</div>
+            <div data-value="10" class="card heart 23" id="jackHeart">J♥</div>
+            <div data-value="10" class="card heart 24" id="queenHeart">Q♥</div>
+            <div data-value="10" class="card heart 25" id="kingHeart">K♥</div>
+
+            <div data-value="11" class="card spade 26" id="aceSpade">A♣</div>
+            <div data-value="2" class="card spade 27" id="twoSpade">2♣</div>
+            <div data-value="3" class="card spade 28" id="threeSpade">3♣</div>
+            <div data-value="4" class="card spade 29" id="fourSpade">4♣</div>
+            <div data-value="5" class="card spade 30" id="fiveSpade">5♣</div>
+            <div data-value="6" class="card spade 31" id="sixSpade">6♣</div>
+            <div data-value="7" class="card spade 32" id="sevenSpade">7♣</div>
+            <div data-value="8" class="card spade 33" id="eightSpade">8♣</div>
+            <div data-value="9" class="card spade 34" id="nineSpade">9♣</div>
+            <div data-value="10" class="card spade 35" id="tenSpade">10♣</div>
+            <div data-value="10" class="card spade 36" id="jackSpade">J♣</div>
+            <div data-value="10" class="card spade 37" id="queenSpade">Q♣</div>
+            <div data-value="10" class="card spade 38" id="kingSpade">K♣</div>
+
+            <div data-value="11" class="card diamond 39" id="aceDiamond">A♦</div>
+            <div data-value="2" class="card diamond 40" id="twoDiamond">2♦</div>
+            <div data-value="3" class="card diamond 41" id="threeDiamond">3♦</div>
+            <div data-value="4" class="card diamond 42" id="fourDiamond">4♦</div>
+            <div data-value="5" class="card diamond 43" id="fiveDiamond">5♦</div>
+            <div data-value="6" class="card diamond 44" id="sixDiamond">6♦</div>
+            <div data-value="7" class="card diamond 45" id="sevenDiamond">7♦</div>
+            <div data-value="8" class="card diamond 46" id="eightDiamond">8♦</div>
+            <div data-value="9" class="card diamond 47" id="nineDiamond">9♦</div>
+            <div data-value="10" class="card diamond 48" id="tenDiamond">10♦</div>
+            <div data-value="10" class="card diamond 49" id="jackDiamond">J♦</div>
+            <div data-value="10" class="card diamond 50" id="queenDiamond">Q♦</div>
+            <div data-value="10" class="card diamond 51" id="kingDiamond">K♦</div>
         </div>
         <div class="playerTotal"><p id="playerTotalPara">Player Total:</p></div>
     </div>
@@ -89,6 +148,15 @@
         let dealerTotalP = document.getElementById("dealerTotalPara");
         let playerTotalNumber = 0;
         let dealerTotalNumber = 0;
+
+        const aceOfSpades = document.getElementById("aceSpade");
+        const aceOfHearts = document.getElementById("aceHeart");
+        const aceOfClubs = document.getElementById("aceClub");
+        const aceOfDiamonds = document.getElementById("aceDiamond");
+        const dealerAceOfSpades = document.getElementById("dealerAceSpade");
+        const dealerAceOfHearts = document.getElementById("dealerAceHeart");
+        const dealerAceOfClubs = document.getElementById("dealerAceClub");
+        const dealerAceOfDiamonds = document.getElementById("dealerAceDiamond");
 
         function playerTotal() {
             cards.forEach((checkCardDisplay) => {
@@ -145,7 +213,7 @@
                 dealerCardDisplayNone.style.display = "none";
             })
             blankCard.style.display = "block";
-            let dealerCard = Math.floor(Math.random() * 25);
+            let dealerCard = Math.floor(Math.random() * 52);
             console.log(dealerCard);
             dealerCards.forEach((dealerCardShow) => {
                 if(dealerCardShow.classList.contains(dealerCard)) {
@@ -154,7 +222,7 @@
                 }
             })
             for(let i = 0; i < 2; i++) {
-                let cardDeal = Math.floor(Math.random() * 25);
+                let cardDeal = Math.floor(Math.random() * 52);
                 console.log(cardDeal);
                 cards.forEach((cardShow) => {
                 if(cardShow.classList.contains(cardDeal) && !cardsDealt.includes(cardDeal)) {
@@ -169,12 +237,21 @@
 
             playerTotalNumber = 0;
             dealerTotalNumber = 0;
+            aceOfSpades.setAttribute("data-value", "11");
+            aceOfHearts.setAttribute("data-value", "11");
+            aceOfClubs.setAttribute("data-value", "11");
+            aceOfDiamonds.setAttribute("data-value", "11");
+            dealerAceOfSpades.setAttribute("data-value", "11");
+            dealerAceOfHearts.setAttribute("data-value", "11");
+            dealerAceOfClubs.setAttribute("data-value", "11");
+            dealerAceOfDiamonds.setAttribute("data-value", "11");
             playerTotal();
             dealerTotal();
+            aceIsOne()
         }
 
         function Hit() {
-            let cardDeal = Math.floor(Math.random() * 25);
+            let cardDeal = Math.floor(Math.random() * 52);
             console.log(cardDeal);
             cards.forEach((cardShow) => {
                 if(cardShow.classList.contains(cardDeal) && !cardsDealt.includes(cardDeal)) {
@@ -188,10 +265,11 @@
             playerTotalNumber = 0;
             dealerTotalNumber = 0;
             playerTotal();
+            aceIsOne()
         }
 
         function dealerHit() {
-            let dealerCard = Math.floor(Math.random() * 25);
+            let dealerCard = Math.floor(Math.random() * 52);
             console.log(dealerCard);
             dealerCards.forEach((dealerCardShow) => {
                 if(dealerCardShow.classList.contains(dealerCard)) {
@@ -201,11 +279,12 @@
             })
             dealerTotalNumber = 0;
             dealerTotal();
+            aceIsOne();
         }
 
         function stand() {
             blankCard.style.display = "none";
-            let dealerCard = Math.floor(Math.random() * 25);
+            let dealerCard = Math.floor(Math.random() * 52);
             console.log(dealerCard);
             dealerCards.forEach((dealerCardShow) => {
                 if(dealerCardShow.classList.contains(dealerCard) && !cardsDealt.includes(dealerCard)) {
@@ -217,13 +296,14 @@
             })
             dealerTotalNumber = 0;
             dealerTotal();
+            aceIsOne();
 
             dealerEnd();
         }
 
         function dealerEnd() {
                 setTimeout(() => {
-                if(dealerTotalNumber <= 16) {
+                if(dealerTotalNumber <= 16 && (playerTotalNumber < 22)) {
                     dealerHit();
                     dealerEnd();
                 } else if(dealerTotalNumber >= 17) {
@@ -233,6 +313,50 @@
             }, 500);
         }
 
+        function aceIsOne() {
+            if(playerTotalNumber > 21 && (aceOfClubs.style.display === "block")) {
+                aceOfClubs.setAttribute("data-value", "1");
+            }
+            playerTotalNumber = 0;
+            playerTotal();
+            if(playerTotalNumber > 21 && (aceOfHearts.style.display === "block")) {
+                aceOfHearts.setAttribute("data-value", "1");
+            }
+            playerTotalNumber = 0;
+            playerTotal();
+            if(playerTotalNumber > 21 && (aceOfSpades.style.display === "block")) {
+                aceOfSpades.setAttribute("data-value", "1");
+            }
+            playerTotalNumber = 0;
+            playerTotal();
+            if(playerTotalNumber > 21 && (aceOfDiamonds.style.display === "block")) {
+                aceOfDiamonds.setAttribute("data-value", "1");
+            }
+            playerTotalNumber = 0;
+            playerTotal();
+
+            if(dealerTotalNumber > 21 && (dealerAceOfClubs.style.display === "block")) {
+                dealerAceOfClubs.setAttribute("data-value", "1");
+            }
+            dealerTotalNumber = 0;
+            dealerTotal();
+            if(dealerTotalNumber > 21 && (dealerAceOfHearts.style.display === "block")) {
+                dealerAceOfHearts.setAttribute("data-value", "1");
+            }
+            dealerTotalNumber = 0;
+            dealerTotal();
+            if(dealerTotalNumber > 21 && (dealerAceOfSpades.style.display === "block")) {
+                dealerAceOfSpades.setAttribute("data-value", "1");
+            }
+            dealerTotalNumber = 0;
+            dealerTotal();
+            if(dealerTotalNumber > 21 && (dealerAceOfDiamonds.style.display === "block")) {
+                dealerAceOfDiamonds.setAttribute("data-value", "1");
+            }
+            dealerTotalNumber = 0;
+            dealerTotal();
+        }
+
         function logCardsDealt() {
             console.log(cardsDealt);
         }
@@ -240,7 +364,6 @@
 
     <!-- 
         make it so that the most recent card is shown at the end
-        have ace =1 if >21
     -->
 </body>
 </html>
