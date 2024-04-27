@@ -153,6 +153,8 @@
         const cards = document.querySelectorAll(".card");
         const dealerCards = document.querySelectorAll(".dealerCard");
         const blankCard = document.getElementById("blank");
+        let dealerCardHidden;
+        let dealerCardHiddenCardShow;
         const playerAreaDiv = document.getElementById("playerArea");
         const dealerAreaDiv = document.getElementById("dealerArea");
         let cardsDealt = [];
@@ -223,23 +225,41 @@
             cardsDealt.length = 0;
             playerAreaDiv.innerHTML = "";
             dealerAreaDiv.innerHTML = "";
+
             cards.forEach((cardDisplayNone) => {
                 cardDisplayNone.style.display = "none";
             })
             dealerCards.forEach((dealerCardDisplayNone) => {
                 dealerCardDisplayNone.style.display = "none";
             })
-            blankCard.style.display = "block";
-            dealerAreaDiv.append(dealerCards[52]);
+
+            dealerCardHidden = Math.floor(Math.random() * 52);
+            console.log(dealerCardHidden);
+
+            dealerCards.forEach((dealerCardHiddenCard) => {
+                if(dealerCardHiddenCard.classList.contains(dealerCardHidden)) {
+                    dealerCardHiddenCard.style.display = "none";
+                    cardsDealt.push(dealerCardHidden);
+                } 
+            })
+
             let dealerCard = Math.floor(Math.random() * 52);
             console.log(dealerCard);
             dealerCards.forEach((dealerCardShow) => {
-                if(dealerCardShow.classList.contains(dealerCard)) {
+                if(dealerCardShow.classList.contains(dealerCard) && !cardsDealt.includes(dealerCardHidden)) {
                     dealerCardShow.style.display = "block";
                     dealerAreaDiv.append(dealerCards[dealerCard]);
                     cardsDealt.push(dealerCard);
+                } else if(dealerCardShow.classList.contains(dealerCard) && cardsDealt.includes(dealerCardHidden)) {
+                    dealerHit()
                 }
             })
+
+            dealerAreaDiv.append(dealerCards[dealerCardHidden]);
+
+            blankCard.style.display = "block";
+            dealerAreaDiv.append(dealerCards[52]);
+
             for(let i = 0; i < 2; i++) {
                 let cardDeal = Math.floor(Math.random() * 52);
                 console.log(cardDeal);
@@ -254,7 +274,7 @@
                 }
             })
             }
-
+            
             playerTotalNumber = 0;
             dealerTotalNumber = 0;
             aceOfSpades.setAttribute("data-value", "11");
@@ -306,17 +326,13 @@
 
         function stand() {
             blankCard.style.display = "none";
-            let dealerCard = Math.floor(Math.random() * 52);
-            console.log(dealerCard);
-            dealerCards.forEach((dealerCardShow) => {
-                if(dealerCardShow.classList.contains(dealerCard) && !cardsDealt.includes(dealerCard)) {
-                    dealerCardShow.style.display = "block";
-                    dealerAreaDiv.append(dealerCards[dealerCard]);
-                } else if(dealerCardShow.classList.contains(dealerCard) && cardsDealt.includes(dealerCard)) {
-                    stand();
-                    return;
+
+            dealerCards.forEach((showHiddenDealerCard) => {
+                if(showHiddenDealerCard.classList.contains(dealerCardHidden)) {
+                    showHiddenDealerCard.style.display = "block";
                 }
             })
+
             dealerTotalNumber = 0;
             dealerTotal();
             aceIsOne();
