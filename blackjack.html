@@ -9,15 +9,10 @@
 <body>
     <div class="container">
         <div class="controls">
-            <label id="riggedContainer">Rigged <input type="checkbox" id="riggedCheckbox"> </label>
-            <button class="button" onclick="nextHand()">New Hand</button>
-            <button class="button" onclick="Hit()">Hit</button>
-            <button class="button" onclick="stand()">Stand</button>
-            <!--<button class="button" onclick="playerTotal()">Refresh</button>
-            <button class="button" onclick="logCardsDealt()">Cards</button>
-            <button class="button" onclick="dealerHit()">Dealer Hit</button>
-            <button class="button" onclick="aceIsOne()">Ace1</button>
-            <button class="button" onclick="logCards()">Cards</button>-->
+            <!--<label id="riggedContainer">Rigged <input type="checkbox" id="riggedCheckbox"> </label>-->
+            <button class="button" id="newHandButton" onclick="newHand()">New Hand</button>
+            <button class="button" id="hitButton" onclick="Hit()">Hit</button>
+            <button class="button" id="standButton" onclick="stand()">Stand</button>
         </div>
         <div class="dealerCardsGenerated" id="dealerCardsGenerated">
             <div data-value="11" class="dealerCard club 0" id="dealerAceClub">A♠</div>
@@ -146,6 +141,8 @@
 
         <div class="playerTotal"><p id="playerTotalPara">Player Total:</p></div>
 
+        <div id="winLossArea"></div>
+
         <p style="color: white;">I am not a designer.</p>
     </div>
 
@@ -153,6 +150,16 @@
         const cards = document.querySelectorAll(".card");
         const dealerCards = document.querySelectorAll(".dealerCard");
         const blankCard = document.getElementById("blank");
+        const newHandButton = document.getElementById("newHandButton");
+        const hitButton = document.getElementById("hitButton");
+        const standButton = document.getElementById("standButton");
+        const winDrawLossArea = document.getElementById("winLossArea");
+        const winPara = document.getElementById("wins");
+        let numberOfWins = 0;
+        const drawPara = document.getElementById("draws");
+        let numberOfDraws = 0;
+        const lossPara = document.getElementById("losses");
+        let numberOfLosses = 0;
         let dealerCardHidden;
         let dealerCardHiddenCardShow;
         const playerAreaDiv = document.getElementById("playerArea");
@@ -221,10 +228,28 @@
         }
         document.addEventListener("DOMContentLoaded", dealerTotal());
 
-        function nextHand() {
+
+        function appendWinsDrawsLosses() {
+            winDrawLossArea.innerHTML = "";
+
+            displayWins = document.createTextNode("Wins: " + numberOfWins + " ");
+            winDrawLossArea.appendChild(displayWins);
+
+            displayDraws = document.createTextNode("Draws: " + numberOfDraws + " ");
+            winDrawLossArea.appendChild(displayDraws);
+
+            displayLosses = document.createTextNode("Losses: " + numberOfLosses + " ");
+            winDrawLossArea.appendChild(displayLosses);
+        }
+        document.addEventListener("DOMContentLoaded", appendWinsDrawsLosses());
+
+
+        function newHand() {
             cardsDealt.length = 0;
             playerAreaDiv.innerHTML = "";
             dealerAreaDiv.innerHTML = "";
+            hitButton.disabled = false;
+            standButton.disabled = false;
 
             cards.forEach((cardDisplayNone) => {
                 cardDisplayNone.style.display = "none";
@@ -246,11 +271,11 @@
             let dealerCard = Math.floor(Math.random() * 52);
             console.log(dealerCard);
             dealerCards.forEach((dealerCardShow) => {
-                if(dealerCardShow.classList.contains(dealerCard) && !cardsDealt.includes(dealerCardHidden)) {
+                if(dealerCardShow.classList.contains(dealerCard) && !cardsDealt.includes(dealerCard)) {
                     dealerCardShow.style.display = "block";
                     dealerAreaDiv.append(dealerCards[dealerCard]);
                     cardsDealt.push(dealerCard);
-                } else if(dealerCardShow.classList.contains(dealerCard) && cardsDealt.includes(dealerCardHidden)) {
+                } else if(dealerCardShow.classList.contains(dealerCard) && cardsDealt.includes(dealerCard)) {
                     dealerHit()
                 }
             })
@@ -307,16 +332,25 @@
             dealerTotalNumber = 0;
             playerTotal();
             aceIsOne()
+
+            if(playerTotalNumber >21) {
+                hitButton.disabled = true;
+                stand();
+                outcome();
+            }
+            
         }
 
         function dealerHit() {
             let dealerCard = Math.floor(Math.random() * 52);
             console.log(dealerCard);
             dealerCards.forEach((dealerCardShow) => {
-                if(dealerCardShow.classList.contains(dealerCard)) {
+                if(dealerCardShow.classList.contains(dealerCard) && !cardsDealt.includes(dealerCard)) {
                     dealerCardShow.style.display = "block";
                     dealerAreaDiv.append(dealerCards[dealerCard]);
                     cardsDealt.push(dealerCard);
+                } else if(dealerCardShow.classList.contains(dealerCard) && cardsDealt.includes(dealerCard)) {
+                    dealerHit();
                 }
             })
             dealerTotalNumber = 0;
@@ -333,6 +367,9 @@
                 }
             })
 
+            standButton.disabled = true;
+            hitButton.disabled = true;
+
             dealerTotalNumber = 0;
             dealerTotal();
             aceIsOne();
@@ -342,14 +379,41 @@
 
         function dealerEnd() {
                 setTimeout(() => {
-                if(dealerTotalNumber <= 16 && (playerTotalNumber < 22)) {
-                    dealerHit();
-                    dealerEnd();
-                } else if(dealerTotalNumber >= 17) {
-                    console.log("Dealer is over 16")
-                    //run win function
-                }
+                    if(dealerTotalNumber > playerTotalNumber) {
+                        outcome();
+                    } else if(dealerTotalNumber < 17 && (playerTotalNumber < 22)) {
+                        dealerHit();
+                        dealerEnd();
+                    } else if(dealerTotalNumber > 16 && playerTotalNumber <22) {
+                        outcome();
+                    }
             }, 500);
+        }
+
+        function outcome() {
+            console.log("Running Outcome");
+            if(playerTotalNumber > dealerTotalNumber && playerTotalNumber <22) {
+                numberOfWins++;
+                console.log("Win");
+                appendWinsDrawsLosses();
+            } else if(playerTotalNumber < dealerTotalNumber && dealerTotalNumber > 21) {
+                numberOfWins++;
+                console.log("Win");
+                appendWinsDrawsLosses();
+            } else if(dealerTotalNumber > playerTotalNumber && dealerTotalNumber <22) {
+                numberOfLosses++;
+                console.log("Loss");
+                appendWinsDrawsLosses();
+            } else if(playerTotalNumber > dealerTotalNumber && playerTotalNumber > 21) {
+                numberOfLosses++;
+                console.log("Loss");
+                appendWinsDrawsLosses();
+            }
+            else if(playerTotalNumber == dealerTotalNumber && playerTotalNumber < 22) {
+            numberOfDraws++;
+            console.log("Draw");
+            appendWinsDrawsLosses();
+            }
         }
 
         function aceIsOne() {
