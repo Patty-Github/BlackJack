@@ -183,7 +183,7 @@
         const dealerAceOfClubs = document.getElementById("dealerAceClub");
         const dealerAceOfDiamonds = document.getElementById("dealerAceDiamond");
 
-        const riggedBox = document.getElementById("riggedCheckbox");
+        //const riggedBox = document.getElementById("riggedCheckbox");
 
         function playerTotal() {
             cards.forEach((checkCardDisplay) => {
@@ -361,7 +361,7 @@
             aceIsOne();
         }
 
-        function dealerHitRigged() {
+        /*function dealerHitRigged() {
             console.log("Running Rigged");
             let dealerCard = Math.floor(Math.random() * 52);
             console.log(dealerCard);
@@ -388,7 +388,7 @@
             dealerTotalNumber = 0;
             dealerTotal();
             aceIsOne();
-        }
+        }*/
 
         function stand() {
             blankCard.style.display = "none";
@@ -406,12 +406,13 @@
             dealerTotal();
             aceIsOne();
 
-            if(riggedBox.checked == false) {
+            /*if(riggedBox.checked == false) {
                 dealerEnd();
             } else if(riggedBox.checked == true) {
                 console.log("Rigged Is Checked");
                 riggedDealerEnd();
-            }
+            }*/
+            dealerEnd();
         }
 
         function dealerEnd() {
@@ -427,7 +428,7 @@
             }, 500);
         }
 
-        function riggedDealerEnd() {
+        /*function riggedDealerEnd() {
                 setTimeout(() => {
                     if(dealerTotalNumber > playerTotalNumber) {
                         outcome();
@@ -438,7 +439,7 @@
                         outcome();
                     }
             }, 500);
-        }
+        }*/
 
         function outcome() {
             console.log("Running Outcome");
