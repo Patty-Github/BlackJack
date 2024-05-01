@@ -8,8 +8,8 @@
     height: fit-content;
     width: fit-content;
     padding: 10px;
-    margin: 10px;
-    font-size: 5vw;
+    margin: 5px;
+    font-size: 4.5vw;
     border-radius: 5px;
     color: black;
 }
@@ -34,6 +34,7 @@
 .controls {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: fit-content;
     margin: 10px 30px 10px 30px;
     border-radius: 20px;
@@ -65,19 +66,6 @@
     width: calc(100% - 60px);
     background-color: rgb(50, 50, 50);
 }
-
-/*.playerArea {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 10px 30px 10px 30px;
-    border-radius: 20px;
-    height: fit-content;
-    min-height: 320px;
-    width: calc(100% - 60px);
-    background-color: rgb(50, 50, 50);
-}*/
 
 .playerTotal, .dealerTotal {
     display: flex;
